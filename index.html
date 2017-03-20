@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="./css/main.css"/>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXjlpHqF497X-SsdiMXiyydgtgt1lauis"></script>
+    <script src="./js/branches.json"></script>
+    <script src="./js/branchHandler.js"></script>
+    <script src="./js/mapHandler.js"></script>
+    <script src="./js/smoothscroll.js"></script>
+    <script>
+
+      $(document).ready(function () {
+        //initialize swiper when document ready
+        var mySwiper = new Swiper ('.swiper-container', {
+          pagination: '.swiper-pagination',
+          slidesPerView: 4,
+          centeredSlides: true,
+          paginationClickable: true,
+          spaceBetween: 30
+        })
+        // smoothScroll.init();
+
+        $("a").on('click', function(event) {
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+            console.log($(hash).offset().top)
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          } // End if
+        })
+      });
+
+    </script>
+  </head>
+  <body onload="initializeSelectBranchTag();loadMap();renderSelectedBranch()">
+    <div id="home-section" >
+      <div class="one-third column top-left-triangle">&nbsp;</div>
+      <div class="one-third column">
+        <nav>
+          <a href="#home-section" ><i class="fa fa-home"></i>Home/</a>
+          <a href="#price-header"><i class="fa fa-usd"></i>Price/</a>
+          <a href="#branch-header"><i class="fa fa-map"></i>Branches/</a>
+        </nav>
+        <div class="headers">
+          <h1 id='gasul-header' class='sliding-u-l-r'>GASUL</h1>
+          <h1 id='davao-header'>DAVAO</h1>
+        </div>
+      </div>
+      <div class="one-third column top-right-triangle">&nbsp;</div>
+    </div>
+    <div id="price-section">
+      <div class="twelve column">
+        <div class="row">
+          <h2 id="price-header">PRICING</h2>
+          <h3 id="price-date-header">Last Update March 20, 2017</h3>
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <h3>2.7kg</h3>
+                  <h3>P256.00</h3>
+                </div>
+                <div class="swiper-slide">
+                  <h3>7kg</h3>
+                  <h3>P498.00</h3>
+                </div>
+                <div class="swiper-slide">
+                  <h3>11kg</h3>
+                  <h3>P766.00</h3>
+                </div>
+                <div class="swiper-slide">
+                  <h3>22kg</h3>
+                  <h3>P1,532.00</h3>
+                </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="branches-section">
+      <div class="twelve column">
+        <div class="row">
+          <div id="branch-container" class="one-half column branches">
+            <h3 id="branch-header">Branches</h3>
+            <h4>Select a branch near you</h4>
+            <form>
+                <select id="branch" class="pure-input-1-2" onchange="renderSelectedBranch(); loadMap()">
+                </select>
+            </form>
+            <div class="branch-details">
+              <p id="telNo"></p>
+            </div>
+            <div class="branch-details">
+              <p id="workingDays"></p>
+            </div>
+            <div class="branch-details">
+              <p id="workingHours"></p>
+            </div>
+          </div>
+          <div id="map-container" class="one-half column column">
+            <div id="map" style="width:100%;height:650px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+.carousel-cell{
+  border-style: groove;
+  height: 260px;
+  margin-right: 10px;
+  width: 25%;
+}
+
+.price-block{
+  text-align: center;
+}
+
+.flickity-prev-next-button{
+  width: 100px;
+  height: 100px;
+  background: transparent;
+}
+
+.product-name{
+  background-color: #0075F2;
+  color: white;
+  margin-top: -0.8em;
+}
+
+.no-of-people{
+  font-size: 2em;
+}

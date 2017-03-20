@@ -1,0 +1,76 @@
+@media (min-width: 300px) {
+
+  #branch-container{
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #map-container{
+    width: 100%;
+  }
+  #branches-section{
+    background: #005ECA;
+    text-align: center;
+  }
+  #branches-section h3{
+    color: white;
+    font-size: 5em;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 0.5em;
+    text-decoration: underline;
+  }
+  #branches-section h4{
+    color: white;
+    font-size: 3em;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 0.5em;
+  }
+  #branch{
+    font-size: 2em;
+    height: 2em;
+  }
+  .branches{
+    background: #005ECA;
+  }
+  .branch-details{
+    color: white;
+    padding-left: 4.5em;
+    text-align: left;
+  }
+  #workingDays{
+    position: relative; /* Helps us control overlap */
+    padding-left: 1.5em; /* Creates space for the Phone Icon */
+    font-size: 3em;
+  }
+  #workingDays:after{
+    content: "\f133";
+    font-family: fontAwesome;
+    position: absolute;
+    left: 0; /* Adjust as needed */
+    top: 3px; /* Adjust as needed */
+  }
+  #workingHours{
+    position: relative; /* Helps us control overlap */
+    padding-left: 1.5em; /* Creates space for the Phone Icon */
+    font-size: 3em;
+  }
+  #workingHours:after{
+    content: "\f017";
+    font-family: fontAwesome;
+    position: absolute;
+    left: 0; /* Adjust as needed */
+    top: 3px; /* Adjust as needed */
+  }
+  #telNo{
+    position: relative; /* Helps us control overlap */
+    padding-left: 1.5em; /* Creates space for the Phone Icon */
+    font-size: 3em;
+  }
+  #telNo:after{
+    content: "\f095";
+    font-family: fontAwesome;
+    position: absolute;
+    left: 0; /* Adjust as needed */
+    top: 3px; /* Adjust as needed */
+  }
+}
